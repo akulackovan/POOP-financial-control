@@ -532,14 +532,15 @@ public class CLI {
             }
         }
 
-        if (!"list".equals(args[1]) &&  !"add".equals(args[1]) && category == null) {
+        if (!"list".equals(args[1]) && !"add".equals(args[1]) && category == null) {
             category = getListCategories("income".equals(type), false);
             if (category == null)
                 return; // отмена
         }
 
-        String newName = argumentsCategory.getOrDefault("-n", null);
-        if (newName == null && (args[1].equals("edit"))) {
+        String newName = args[1].equals("add") ? argumentsCategory.getOrDefault("-c", null)
+                : argumentsCategory.getOrDefault("-n", null);
+        if (newName == null && (args[1].equals("edit") || args[1].equals("add"))) {
             newName = getInput("Введите новое название категории");
         }
 
@@ -560,7 +561,7 @@ public class CLI {
             return;
         }
         if (type.equals("outcome")) {
-            
+
             walletService.addSpentOutcome(loggedUser, category, 0L);
         } else if (type.equals("income")) {
             walletService.addIncome(loggedUser, category, 0L);
@@ -602,10 +603,10 @@ public class CLI {
     private void editCategory(String type, String category, String newName) {
         try {
             if ((loggedUser.getWallet().hasIncomeCategory(newName) && "income".equals(type)) || (loggedUser.getWallet()
-                    .hasOutcomeCategory(newName) && "outcome".equals(type))){
-                        System.out.println("Категория уже существует. Операция будет прервана.");
-                        return;
-                    }
+                    .hasOutcomeCategory(newName) && "outcome".equals(type))) {
+                System.out.println("Категория уже существует. Операция будет прервана.");
+                return;
+            }
             walletService.editCategory(loggedUser, category, type, newName);
 
         } catch (IncomeCategoryAlreadyExistsException | OutcomeCategoryAlreadyExistsException e) {
