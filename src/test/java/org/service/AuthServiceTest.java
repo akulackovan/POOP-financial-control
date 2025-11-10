@@ -65,7 +65,7 @@ class AuthServiceTest {
 
     // Проверка хеширования пароля
     @Test
-    void addUserHashesPassword() throws Exception {
+    void testAddUserHashesPassword() throws Exception {
         String username = "user";
         String password = "user";
 

@@ -85,6 +85,7 @@ help [<команда>]
 | category list   | -t {тип}                           | Список категорий    |
 | category remove | -c {категория} -t {тип}            | Удалить категорию   |
 | category edit   | -c {категория} -t {тип} -n {имя}   | Переименовать       |
+| category add    | -c {категория} -t {тип}            | Новая категория     |
 
 ### Экспорт и импорт
 
@@ -174,6 +175,12 @@ exit
     user.file=data/users.json
     export.path=snapshot/export
     import.path=snapshot/import
+
+
+## Тестирование
+
+Тесты для проверки реализаций функций приложения приведены в папке `src/test`.
+
 
 ## Технологии
 

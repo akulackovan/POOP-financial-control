@@ -100,7 +100,7 @@ class WalletTest {
 
     // Проверка выхода за границы дохода
     @Test
-    void isBudgetExceededSpent() {
+    void testBudgetExceededSpent() {
         wallet.addTransaction(new Transaction("Зарплата", 50000L, TransactionType.INCOME));
         wallet.addTransaction(new Transaction("Продукты", 60000L, TransactionType.OUTCOME_SPENT));
         
@@ -109,7 +109,7 @@ class WalletTest {
     
     // Проверка предупреждения о 80%
     @Test
-    void isBudgetWarningTrue() {
+    void testBudgetWarningTrue() {
         long planned = 1000;
         long spent = (long) (planned * 0.8);
         wallet.addTransaction(new Transaction("Продукты", planned, TransactionType.OUTCOME_PLANNED));
@@ -120,7 +120,7 @@ class WalletTest {
 
     // Проверка отсутствия предупреждения о 80%
     @Test
-    void isBudgetWarningFalse() {
+    void testBudgetWarningFalse() {
         long planned = 1000;
         long spent = (long) (planned * 0.799);
         System.out.println(spent);
@@ -130,5 +130,14 @@ class WalletTest {
         assertFalse(wallet.isBudgetWarning("Продукты"));
     }
     
+    // Проверка на пустые категории
+    @Test
+    void testEmptyWalletOperations() {
+        assertTrue(wallet.getIncomeCategories().isEmpty());
+        assertTrue(wallet.getOutcomeCategories().isEmpty());
+        assertEquals(0, wallet.getTotalIncome());
+        assertEquals(0, wallet.getTotalOutcomePlanned());
+        assertEquals(0, wallet.getTotalOutcomeSpent());
+    }
 
 } 
