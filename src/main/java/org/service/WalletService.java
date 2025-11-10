@@ -13,9 +13,12 @@ import org.model.User;
 import org.model.Wallet;
 import org.storage.Config;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /*
  * Сервис работы с кошельком пользователя
  */
+@JsonIgnoreProperties(ignoreUnknown = true) // игнорирование сериализаций
 public class WalletService {
     private final UserService userService = new UserService(Config.get("user.file"));
 

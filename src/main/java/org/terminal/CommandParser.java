@@ -26,6 +26,7 @@ public class CommandParser {
         commandArgs.put("category remove", Arrays.asList("-c", "-t"));
         commandArgs.put("category list", Arrays.asList("-c", "-t"));
         commandArgs.put("category edit", Arrays.asList("-c", "-t", "-n"));
+        commandArgs.put("category add", Arrays.asList("-c", "-t"));
         commandArgs.put("export", Arrays.asList("-f"));
         commandArgs.put("import", Arrays.asList("-f"));
     }

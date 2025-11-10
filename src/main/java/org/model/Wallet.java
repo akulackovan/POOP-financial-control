@@ -31,7 +31,7 @@ public class Wallet {
      * @throws IllegalArgumentException если сумма не положительная
      */
     public void addTransaction(Transaction transaction) {
-        if (transaction.getAmount() <= 0) {
+        if (transaction.getAmount() < 0) {
             throw new IllegalArgumentException("Сумма должна быть положительной");
         }
         transaction.setId(lastTransactionId);
