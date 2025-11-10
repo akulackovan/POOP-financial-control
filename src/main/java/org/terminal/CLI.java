@@ -179,8 +179,11 @@ public class CLI {
             if (categories.isEmpty()) {
                 System.out.println(
                         "Отсутсвуют категории!");
-
-                return getInput("Введите название для создания новой категории");
+                if (isCreate) {
+                    return getInput("Введите название для создания новой категории");
+                } else {
+                    return null;
+                }
             }
             int i = 1;
             if (isCreate)
@@ -247,8 +250,10 @@ public class CLI {
         if (outcomeCategories.isEmpty()) {
             System.out.println("Нет данных");
         } else {
-            System.out.println("      Статус            Категория         Бюджет, руб      Остаток, руб           Факт, руб");
-            System.out.println("--------------------------------------------------------------------------------------------");
+            System.out.println(
+                    "      Статус            Категория         Бюджет, руб      Остаток, руб           Факт, руб");
+            System.out.println(
+                    "--------------------------------------------------------------------------------------------");
 
             outcomeCategories.forEach(category -> {
                 long planned = wallet.getPlannedOutcomeByCategory().getOrDefault(category, 0L);
