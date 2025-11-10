@@ -91,6 +91,7 @@ help [<команда>]
 | export  | -f {файл}       | Экспорт JSON        |
 | import  | -f {файл}       | Импорт JSON         |
 
+Файлы расположены в `snapshot/export` и `snapshot/import`.
 
 ### Выход
 
