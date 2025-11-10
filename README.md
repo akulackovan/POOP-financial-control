@@ -33,9 +33,6 @@ mvn clean compile
 # Запуск приложения
 mvn exec:java -Dexec.mainClass=org.Main
 
-# Или запуск с JAR
-mvn clean package
-java -jar target/POOP-financial-control-1.0.jar
 ```
 
 ## CLI-взаимодействие
