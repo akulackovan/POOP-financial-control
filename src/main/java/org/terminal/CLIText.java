@@ -27,6 +27,7 @@ public class CLIText {
       set_budget [-c <категория> -a <сумма>]   - установить бюджет (планируемый расход)
       category list [-t <тип>]                 - показать категории
       category remove [-c <категория> -t <тип>] - удалить категорию
+      category add [-c <категория> -t <тип>]   - добавить категорию
       category edit [-c <категория> -t <тип> -n <новое_имя>] - переименовать категорию
       export [-f <файл>]                       - экспорт данных
       import [-f <файл>]                       - импорт данных
@@ -39,6 +40,7 @@ public class CLIText {
   public static final String CATEGORY_HELP = """
       --- Управление категориями ---
       category list [-t <тип>]                 - показать категории (income/outcome)
+      category add  [-c <категория> -t <тип>]  - добавть категорию
       category remove [-c <категория> -t <тип>] - удалить категорию и все связанные транзакции
       category edit [-c <категория> -t <тип> -n <новое_имя>] - переименовать категорию
 
